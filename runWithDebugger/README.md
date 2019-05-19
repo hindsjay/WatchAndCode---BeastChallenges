@@ -1,0 +1,2 @@
+Created a function that automatically runs the debugger on another function passed in as a callback.
+The function should also take an optional array where its elements are passed in as arguments to the callback function.
