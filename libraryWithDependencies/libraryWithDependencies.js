@@ -1,5 +1,5 @@
 
-// librarySystem is a function that creates a library as well as gives us the ability to globally use the library created or any other libraries previously created/stored/
+// librarySystem is a function that creates a library as well as gives us the ability to globally use the library created or any other libraries previously created/stored
 
 // our task is to update the code to allow for dependencies on other libraries to occur (i.e. for one library to work it requires access to other libraries)
 
