@@ -1,0 +1,87 @@
+<script src="simpletest.js"></script>
+<script src="isPrototypeOf.js"></script>
+<script>
+
+// Function Signature:
+  // isPrototypeOf(prototypeObj, object);
+
+// Parameters:
+  // prototypeObj >>> the object prototype in which another object may be linked/based upon
+  // object >>> the object whose prototype chain will be searched
+
+// Return Value:
+  // returns a Boolean indicating whether the calling object lies in the prototype chain of the specified object
+
+// Description:
+  // to check whether or not an object exists within another object's prototype chain
+  // a TypeError is thrown if prototypeObj is undefined or null
+
+// ****************************
+
+// >>> goal: to go through object prototype links and return true if there are matches as per our arguments
+// >>> look to use recursion as there may be many depths to evaluate
+
+
+tests({
+  'It should return true when an object is a prototype of prototype Object.': function() {
+    var blankObject = {};
+    var dog = Object.create(blankObject);
+    var isPrototypeOfResult = isPrototypeOf(blankObject, dog);
+    eq(isPrototypeOfResult, true)
+  },
+  'It should return false when an object is NOT a prototype of prototype Object.': function() {
+    // test#1
+    var blankObject = {};
+    var dog = Object.create(blankObject);
+    var empty = Object.create(null);
+    var isPrototypeOfResult = isPrototypeOf(dog, empty);
+    eq(isPrototypeOfResult, false)
+
+    //test#2
+    var blankObject = {};
+    var object2 = {};
+    var dog = Object.create(blankObject);
+    var newObject = Object.create(object2);
+    var isPrototypeOfResult = isPrototypeOf(dog, newObject);
+    eq(isPrototypeOfResult, false)
+  },
+  'It should return true when any prototype is tested against the main Object prototype.': function() {
+    var blankObject = {};
+    var dog = Object.create(blankObject);
+    var isPrototypeOfResult = isPrototypeOf(Object.prototype, dog);
+    eq(isPrototypeOfResult, true)
+  },
+  'It should be able to evaluate for any number of prototype links.': function() {
+    var blankObject = {};
+    var dog = Object.create(blankObject);
+    var dogName = Object.create(dog);
+    var dogColor = Object.create(dogName);
+    var isPrototypeOfResult = isPrototypeOf(dog, dogColor);
+    eq(isPrototypeOfResult, true)
+  },
+  'It should return a TypeError if the prototype Object is undefined or null.': function() {
+    // test#1
+    var isTypeError = false;
+    try {
+      var blankObject = {};
+      var dog = Object.create(blankObject);
+      isPrototypeOf(null, dog);
+    } catch(e) {
+      isTypeError = (e instanceof TypeError)
+    }
+    eq(isTypeError, true)
+
+    //test#2
+    var isTypeError = false;
+    try {
+      var blankObject = {};
+      var dog = Object.create(blankObject);
+      isPrototypeOf(undefined, dog);
+    } catch(e) {
+      isTypeError = (e instanceof TypeError)
+    }
+    eq(isTypeError, true)
+  }
+});
+
+</script>
