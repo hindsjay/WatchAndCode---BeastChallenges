@@ -1,4 +1,4 @@
-Solution for beast challenge #5 - isPrototypeOf
+Solution for beast challenge #5 (https://github.com/gordonmzhu/beasts/issues/4) - isPrototypeOf
 
 Task is to write a function that works just like the Object.prototype.isPrototypeOf method.
 
