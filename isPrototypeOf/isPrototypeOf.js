@@ -19,7 +19,7 @@
 
 
 function isPrototypeOf(prototypeObj, obj) {
-  var objectToBeTested = Object.getPrototypeOf(obj);
+  var prototypeToBeTested = Object.getPrototypeOf(obj);
   
   if (prototypeObj === undefined) {
     throw new TypeError('Cannot read property "isPrototypeOf" of undefined');
@@ -28,13 +28,13 @@ function isPrototypeOf(prototypeObj, obj) {
     throw new TypeError('Cannot read property "isPrototypeOf" of null');
   }
   
-  if (prototypeObj === objectToBeTested) {
+  if (prototypeObj === prototypeToBeTested) {
     return true;
   } else {
-    if (objectToBeTested === null) {
+    if (prototypeToBeTested === null) {
       return false;
     } else {
-    return isPrototypeOf(prototypeObj, objectToBeTested);
+    return isPrototypeOf(prototypeObj, prototypeToBeTested);
     }
   }
 }
