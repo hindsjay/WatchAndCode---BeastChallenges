@@ -1,0 +1,52 @@
+<script src="simpletest.js"></script>
+<script src="twistOnToFixed.js"></script>
+<script>
+
+
+tests({
+  'It should return "1.01" when argument(value) is "1.005" and precision is "2".': function() {
+    var stringToFixedResult = stringToFixed(1.005, 2);
+    eq(stringToFixedResult, '1.01');
+  },
+  'It should return "10.24" when argument(value) is "10.235" and precision is "2".': function() {
+    var stringToFixedResult = stringToFixed(10.235, 2);
+    eq(stringToFixedResult, '10.24');
+  },
+  'It should return "0.62" when argument(value) is "0.615" and precision is "2".': function() {
+    var stringToFixedResult = stringToFixed(0.615, 2);
+    eq(stringToFixedResult, '0.62');
+  },
+  'It should treat precision as "0", when precision is omitted.': function() {
+    // test 1:
+    var stringToFixedResult = stringToFixed(1.35);
+    eq(stringToFixedResult, '1');
+
+    // test 2:
+    var stringToFixedResult = stringToFixed(1.52);
+    eq(stringToFixedResult, '2');
+  },
+  'It should round correctly when argument(value) is less than 1 and precision is "0".': function() {
+    // test 1;
+    var stringToFixedResult = stringToFixed(0.6, 0);
+    eq(stringToFixedResult, '1');
+
+    // test 2:
+    var stringToFixedResult = stringToFixed(0.4, 0);
+    eq(stringToFixedResult, '0');
+  },
+  'If value is an integer it should add the correct number of digits after the decimal.': function() {
+    // test 1:
+    var stringToFixedResult = stringToFixed(2.0, 3);
+    eq(stringToFixedResult, '2.000');
+
+    // test 2:
+    var stringToFixedResult = stringToFixed(5.0, 2);
+    eq(stringToFixedResult, '5.00');
+
+    // test 3:
+    var stringToFixedResult = stringToFixed(2.0, 0);
+    eq(stringToFixedResult, '2');
+  }
+});
+
+</script>
