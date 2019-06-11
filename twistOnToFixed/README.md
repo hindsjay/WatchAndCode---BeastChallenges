@@ -1,4 +1,4 @@
-Solution for beast challenge #6 - A twist on accounting.toFixed
+Solution for beast challenge #6 (https://github.com/gordonmzhu/beasts/issues/7) - A twist on accounting.toFixed
 
 Task is to write toFixed method that does the same thing as toFixed method found in AccountingJS, but do this using string manipulation (cannot use multiplcation or exponential notation).
 
